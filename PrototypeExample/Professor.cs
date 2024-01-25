@@ -11,13 +11,14 @@ namespace PrototypeExample
         public override Person DeepCopy()
         {
             Professor prof = new Professor();
-            prof.Name = Name;
-            prof.Id = Id;
+            prof = (Professor)this.MemberwiseClone();
+            prof.Id = this.Id;
+            prof.Name = this.Name;
             prof.PersonAddress = new Address
             {
-             Building = PersonAddress.Building,
-             Street = PersonAddress.Street,
-             City = PersonAddress.City
+                Building = PersonAddress.Building,
+                Street = PersonAddress.Street,
+                City = PersonAddress.City
             };
             return prof;
         }
@@ -25,6 +26,7 @@ namespace PrototypeExample
         public override Person ShallowCopy()
         {
             return (Professor)this.MemberwiseClone();
+
         }
     }
 }
